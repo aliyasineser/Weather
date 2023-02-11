@@ -9,33 +9,27 @@ import SwiftUI
 import CoreLocation
 
 struct ContentView: View {
-    var meteo: Meteomatics
-
     var date = Date()
-//    Full list of available parameters at https://www.meteomatics.com/en/api/available-parameters/alphabetic-list/
-    var parameters = ["t_2m:C", "wind_speed_850hPa:ms"]
     var latitude = 52.520551
     var longitude = 13.461804
-    var user = ""
-    var password = ""
 
-    init() {
-        meteo = Meteomatics(forDate: date, parameters: self.parameters, latitude: self.latitude, longitude: self.longitude, user: self.user, password: self.password)
-    }
+    let weatherService = WeatherServiceImpl()
 
-    @State var weather: MeteomaticsData = MeteomaticsData()
+    @State var temp: Double?
+
     var body: some View {
-        Text("\(weather.data[0].coordinates[0].dates[0].value)")
-            .task {
-                do {
-                    weather = try await meteo.fetchWeather()
-                } catch {
-                    print(error)
-                }
+        ScrollView {
+            if let temp {
+                Text("\(temp)")
+            } else {
+                ProgressView()
             }
-
-            .padding()
-
+        }
+        .onAppear {
+            Task {
+                temp = await weatherService.fetchTemp()
+            }
+        }
     }
 }
 
