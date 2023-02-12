@@ -8,21 +8,22 @@
 import Foundation
 
 enum WeatherRequest: NetworkRequest {
-    case temperature(lat: Double, lon: Double)
+    case general(lat: Double, lon: Double)
 
     var urlParams: [String : String?] {
         switch self {
-        case .temperature(let lat, let lon):
-            return ["latitude": "\(lat)", "longitude": "\(lon)","hourly": "temperature_2m"]
-
+        case .general(let lat, let lon):
+            return ["latitude": "\(lat)",
+                    "longitude": "\(lon)",
+                    "hourly": "temperature_2m,relativehumidity_2m,rain,windspeed_10m,winddirection_10m,weathercode"
+            ]
         }
     }
 
     var requestType: RequestType {
         switch self {
-        case .temperature(_, _):
+        case .general(_, _):
             return .GET
         }
     }
-
 }

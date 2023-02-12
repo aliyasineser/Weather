@@ -8,33 +8,34 @@
 import SwiftUI
 import CoreLocation
 
-struct ContentView: View {
-    var date = Date()
-    var latitude = 52.520551
-    var longitude = 13.461804
+struct ContentView<Presenter: DashboardPresenter>: View {
 
-    let weatherService = WeatherServiceImpl()
+    @ObservedObject var presenter: Presenter
+
+    init(presenter: Presenter) {
+        self.presenter = presenter
+    }
 
     @State var temp: Double?
 
     var body: some View {
-        ScrollView {
-            if let temp {
-                Text("\(temp)")
+        VStack {
+            if let forecast = presenter.forecast {
+                List {
+                    Text("\(forecast.elevation)")
+                }
             } else {
                 ProgressView()
             }
         }
-        .onAppear {
-            Task {
-                temp = await weatherService.fetchTemp()
-            }
-        }
+        .onAppear(perform: presenter.fetchForecast)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(
+            presenter: DashboardPresenterImpl()
+        )
     }
 }
