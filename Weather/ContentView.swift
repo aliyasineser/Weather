@@ -20,9 +20,9 @@ struct ContentView<Presenter: DashboardPresenter>: View {
 
     var body: some View {
         VStack {
-            if let forecast = presenter.forecast {
+            if let forecast = presenter.forecast.first {
                 List {
-                    Text("\(forecast.elevation)")
+                    Text("\(forecast.temperature2M)")
                 }
             } else {
                 ProgressView()

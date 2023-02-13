@@ -18,10 +18,30 @@ final class WeatherServiceImpl: WeatherService {
         self.requestManager = requestManager
     }
 
-    func fetchTemp() async throws -> TemperatureForecast {
+    func fetchTemp() async throws -> [HourlyForecast] {
         let requestData = WeatherRequest.general(lat: 48.14, lon: 11.58)
         let temp: TemperatureForecast = try await requestManager.initRequest(with: requestData)
-        return temp
+        var hourlyForecasts: [HourlyForecast] = []
+        for index in 0..<temp.hourly.time.count {
+            hourlyForecasts.append(
+                HourlyForecast(
+                    time: temp.hourly.time[index],
+                    temperature2M: temp.hourly.temperature2M[index],
+                    relativehumidity2M: temp.hourly.relativehumidity2M[index],
+                    rain: temp.hourly.rain[index], weathercode: temp.hourly.weathercode[index],
+                    windspeed10M: temp.hourly.windspeed10M[index],
+                    winddirection10M: temp.hourly.winddirection10M[index],
+                    timeUnit: temp.hourlyUnits.time,
+                    temperature2MUnit: temp.hourlyUnits.temperature2M,
+                    relativehumidity2MUnit: temp.hourlyUnits.relativehumidity2M,
+                    rainUnit: temp.hourlyUnits.rain,
+                    weathercodeUnit: temp.hourlyUnits.weathercode,
+                    windspeed10MUnit: temp.hourlyUnits.windspeed10M,
+                    winddirection10MUnit: temp.hourlyUnits.winddirection10M
+                )
+            )
+        }
+        return hourlyForecasts
     }
 
 }

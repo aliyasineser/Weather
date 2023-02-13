@@ -8,13 +8,13 @@
 import Foundation
 
 protocol DashboardPresenter: ObservableObject {
-    var forecast: TemperatureForecast? { get }
+    var forecast: [HourlyForecast] { get }
 
     func fetchForecast()
 }
 
 final class DashboardPresenterImpl: DashboardPresenter {
-    @Published var forecast: TemperatureForecast?
+    @Published var forecast: [HourlyForecast] = []
 
     let weatherService = WeatherServiceImpl()
     var latitude = 52.520551

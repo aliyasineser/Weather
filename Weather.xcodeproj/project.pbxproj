@@ -157,6 +157,7 @@
 		DD56A6F029947E26008D16DA /* WeatherService */ = {
 			isa = PBXGroup;
 			children = (
+				DDA6F80B2999C5E6007A1DE8 /* Codable */,
 				DD3B98D32997331B0041E587 /* WeatherRequest.swift */,
 				DD3B98D5299733760041E587 /* NetworkRequest.swift */,
 				DD3B98D7299733BF0041E587 /* RequestType.swift */,
@@ -165,9 +166,16 @@
 				DD3B98DD299734200041E587 /* RequestManager.swift */,
 				DD3B98DF299734320041E587 /* DataParser.swift */,
 				DD3B98E12997358F0041E587 /* WeatherService.swift */,
-				DD3B98E3299736440041E587 /* TemperatureForecast.swift */,
 			);
 			path = WeatherService;
+			sourceTree = "<group>";
+		};
+		DDA6F80B2999C5E6007A1DE8 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				DD3B98E3299736440041E587 /* TemperatureForecast.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

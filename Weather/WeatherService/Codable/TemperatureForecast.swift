@@ -62,3 +62,15 @@ struct HourlyUnits: Codable {
         case winddirection10M = "winddirection_10m"
     }
 }
+
+struct HourlyForecast {
+    let time: String
+    let temperature2M: Double
+    let relativehumidity2M: Int
+    let rain: Double
+    let weathercode: Int
+    let windspeed10M: Double
+    let winddirection10M: Int
+    let timeUnit, temperature2MUnit, relativehumidity2MUnit, rainUnit: String
+    let weathercodeUnit, windspeed10MUnit, winddirection10MUnit: String
+}
