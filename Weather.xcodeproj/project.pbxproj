@@ -16,6 +16,7 @@
 		DD3B98E0299734320041E587 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3B98DF299734320041E587 /* DataParser.swift */; };
 		DD3B98E22997358F0041E587 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3B98E12997358F0041E587 /* WeatherService.swift */; };
 		DD3B98E4299736440041E587 /* TemperatureForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3B98E3299736440041E587 /* TemperatureForecast.swift */; };
+		DD4E1EDA29A2E2A500794F2A /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E1ED929A2E2A500794F2A /* LocationDataManager.swift */; };
 		DD56A6C229947C0F008D16DA /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56A6C129947C0F008D16DA /* WeatherApp.swift */; };
 		DD56A6C429947C0F008D16DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD56A6C329947C0F008D16DA /* ContentView.swift */; };
 		DD56A6C629947C0F008D16DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD56A6C529947C0F008D16DA /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		DD3B98DF299734320041E587 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		DD3B98E12997358F0041E587 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		DD3B98E3299736440041E587 /* TemperatureForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecast.swift; sourceTree = "<group>"; };
+		DD4E1ED929A2E2A500794F2A /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
 		DD56A6BE29947C0F008D16DA /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD56A6C129947C0F008D16DA /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		DD56A6C329947C0F008D16DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD4E1ED829A2E29300794F2A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DD4E1ED929A2E2A500794F2A /* LocationDataManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		DD56A6B529947C0F008D16DA = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		DD56A6C029947C0F008D16DA /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				DD4E1ED829A2E29300794F2A /* Core */,
 				DD56A6F029947E26008D16DA /* WeatherService */,
 				DD56A6C129947C0F008D16DA /* WeatherApp.swift */,
 				DD56A6C329947C0F008D16DA /* ContentView.swift */,
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4E1EDA29A2E2A500794F2A /* LocationDataManager.swift in Sources */,
 				DD3B98E22997358F0041E587 /* WeatherService.swift in Sources */,
 				DDC80DD82998775700A6B715 /* WMOCodes.swift in Sources */,
 				DD56A6C429947C0F008D16DA /* ContentView.swift in Sources */,
@@ -482,6 +494,7 @@
 				DEVELOPMENT_TEAM = K8CQ9C2992;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to know where you are to show you the weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -510,6 +523,7 @@
 				DEVELOPMENT_TEAM = K8CQ9C2992;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to know where you are to show you the weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

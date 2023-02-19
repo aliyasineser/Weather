@@ -18,8 +18,8 @@ final class WeatherServiceImpl: WeatherService {
         self.requestManager = requestManager
     }
 
-    func fetchTemp() async throws -> [HourlyForecast] {
-        let requestData = WeatherRequest.general(lat: 48.14, lon: 11.58)
+    func fetchTemp(lat: Double, lon: Double) async throws -> [HourlyForecast] {
+        let requestData = WeatherRequest.general(lat: lat, lon: lon)
         let temp: TemperatureForecast = try await requestManager.initRequest(with: requestData)
         var hourlyForecasts: [HourlyForecast] = []
         for index in 0..<temp.hourly.time.count {

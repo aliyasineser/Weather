@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreLocation
 
 protocol DashboardPresenter: ObservableObject {
     var forecast: [HourlyForecast] { get }
+
+    var latitude: CLLocationDegrees { get }
+    var longitude: CLLocationDegrees { get }
+    var locationDataManager: LocationDataManager { get }
 
     func fetchForecast()
 }
@@ -16,14 +22,23 @@ protocol DashboardPresenter: ObservableObject {
 final class DashboardPresenterImpl: DashboardPresenter {
     @Published var forecast: [HourlyForecast] = []
 
+    @ObservedObject var locationDataManager: LocationDataManager
+
+    init(locationDataManager: LocationDataManager) {
+        self.locationDataManager = locationDataManager
+
+        self.latitude = locationDataManager.locationManager.location?.coordinate.latitude ?? 31
+        self.longitude = locationDataManager.locationManager.location?.coordinate.longitude ?? 31
+    }
+
     let weatherService = WeatherServiceImpl()
-    var latitude = 52.520551
-    var longitude = 13.461804
+    @Published var latitude: CLLocationDegrees = 1.0
+    @Published var longitude: CLLocationDegrees = 1.0
 
     @MainActor
     func fetchForecast() {
         Task {
-            forecast = try await weatherService.fetchTemp()
+            forecast = try await weatherService.fetchTemp(lat: latitude, lon: longitude)
         }
     }
 

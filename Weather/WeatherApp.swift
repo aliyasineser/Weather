@@ -11,7 +11,9 @@ import SwiftUI
 struct WeatherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(presenter: DashboardPresenterImpl())
+            ContentView(
+                presenter: DashboardPresenterImpl(locationDataManager: LocationDataManager())
+            )
         }
     }
 }

@@ -20,6 +20,9 @@ struct ContentView<Presenter: DashboardPresenter>: View {
 
     var body: some View {
         VStack {
+            Text("Latitude: \(presenter.longitude.description )")
+            Text("Longitude: \(presenter.latitude.description )")
+
             if let forecast = presenter.forecast.first {
                 List {
                     Text("\(forecast.temperature2M)")
@@ -35,7 +38,7 @@ struct ContentView<Presenter: DashboardPresenter>: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
-            presenter: DashboardPresenterImpl()
+            presenter: DashboardPresenterImpl(locationDataManager: LocationDataManager())
         )
     }
 }
